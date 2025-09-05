@@ -1,24 +1,35 @@
 # Sentinel Homelab — Cad Mendes
 
-> **Resumo (PT-PT):** Laboratório do Microsoft Sentinel com **1 regra KQL (RDP brute force)**, nota de triagem e captura de ecrã (ambiente de **LAB**). Demonstra configuração de SIEM, deteção e resposta operacional a incidentes para funções SOC L1/L2.
+![status](https://img.shields.io/badge/evidence-text--only-blue) ![last updated](https://img.shields.io/badge/updated-today-success)
 
-**What**: Small SOC lab in Microsoft Sentinel with one analytics rule (RDP brute force), a short L1 triage note, and one incident screenshot (**LAB**, sanitized).
+> **Resumo (PT-PT):** Laboratório do Microsoft Sentinel com **1 regra KQL (RDP brute force)** e evidência **sem screenshots**: registo de incidente, amostra de resultados e diagrama. Demonstra SIEM, deteção e triagem L1.
 
-**Why**: Proves hands-on SIEM setup, KQL detection, and incident handling for SOC L1/L2 roles.
+**What**: Small SOC lab in Microsoft Sentinel focusing on one analytics rule (RDP brute force) with **text-first evidence** (no images).
 
-## How to run (quick)
-1. Import KQL from `/detections/rdp-bruteforce.kql` into Sentinel Analytics Rules.
-2. Trigger a benign test in a lab VM (several failed RDP logons → one success).
-3. Use `/playbooks/rdp-triage.md` for L1 steps and note the disposition.
-4. Save one sanitized incident screenshot in `/screenshots/incident.png` (watermark “LAB”).
+**Why**: Proves SIEM setup, KQL detection, and incident handling for SOC L1/L2 roles.
 
-## Files
-- `detections/rdp-bruteforce.kql` — correlates failed→successful RDP (LogonType 10).
-- `playbooks/rdp-triage.md` — 10–12 line L1 triage.
-- `screenshots/incident.png` — sanitized, LAB-watermarked image.
+## Architecture
+```mermaid
+%% see diagrams/architecture.mmd
+flowchart LR
+  A[Lab VM (Windows + Sysmon)] --> B[Azure Monitor Agent]
+  B --> C[Log Analytics Workspace]
+  C --> D[Microsoft Sentinel]
+  D --> E[Analytics Rule<br/>RDP brute force (KQL)]
+  E --> F[Incident + Entities]
 
-## Next
-- Add **PowerShell Encoded** & **Impossible Travel** rules.
-- Add **Windows Event cheat-sheet** and **Sigma→KQL** mapping for one rule.
 
-**Author**: Cad Mendes , UK • [LinkedIn](https://www.linkedin.com/) • Portfolio: https://github.com/CadMendes
+## Evidence (no images)
+- `INCIDENT.md` — filled LAB incident summary  
+- `results/rdp-bruteforce-sample.md` — sample query output table  
+- `detections/rdp-bruteforce.kql` — the KQL used by the rule
+
+<details>
+<summary>How this was generated (LAB)</summary>
+
+- Triggered benign pattern: several failed RDP logons then one success.  
+- Scope limited to LAB; no production data.  
+- After test, access tightened and lab closed.
+</details>
+
+**Author**: Cad Mendes — UK • Portfolio: https://github.com/CadMendes

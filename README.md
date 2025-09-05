@@ -10,26 +10,10 @@
 
 ## Architecture
 ```mermaid
-%% see diagrams/architecture.mmd
 flowchart LR
-  A[Lab VM (Windows + Sysmon)] --> B[Azure Monitor Agent]
-  B --> C[Log Analytics Workspace]
-  C --> D[Microsoft Sentinel]
-  D --> E[Analytics Rule<br/>RDP brute force (KQL)]
-  E --> F[Incident + Entities]
+  A["Lab VM (Windows + Sysmon)"] --> B["Azure Monitor Agent"]
+  B --> C["Log Analytics Workspace"]
+  C --> D["Microsoft Sentinel"]
+  D --> E["Analytics Rule: RDP brute force (KQL)"]
+  E --> F["Incident + Entities"]
 
-
-## Evidence (no images)
-- `INCIDENT.md` — filled LAB incident summary  
-- `results/rdp-bruteforce-sample.md` — sample query output table  
-- `detections/rdp-bruteforce.kql` — the KQL used by the rule
-
-<details>
-<summary>How this was generated (LAB)</summary>
-
-- Triggered benign pattern: several failed RDP logons then one success.  
-- Scope limited to LAB; no production data.  
-- After test, access tightened and lab closed.
-</details>
-
-**Author**: Cad Mendes — UK • Portfolio: https://github.com/CadMendes

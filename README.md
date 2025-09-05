@@ -1,6 +1,7 @@
 # Sentinel Homelab — Cad Mendes
 
 ![status](https://img.shields.io/badge/evidence-text--only-blue) ![last updated](https://img.shields.io/badge/updated-today-success)
+> **LAB only:** synthetic/sample data; no production data is included.
 
 > **Resumo (PT-PT):** Laboratório do Microsoft Sentinel com **1 regra KQL (RDP brute force)** e evidência **sem screenshots**: registo de incidente, amostra de resultados e diagrama. Demonstra SIEM, deteção e triagem L1.
 

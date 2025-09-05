@@ -1,6 +1,6 @@
 # Incident — RDP Brute Force (LAB, sample data)
 
-**When (UTC):** 2025-09-05 14:22  
+**When (UTC):** 2025-09-05 17:03
 **Severity:** Medium  
 **Entities:** `Account=LAB\cad`, `Host=WIN-LAB01`, `IP=203.0.113.42`  
 

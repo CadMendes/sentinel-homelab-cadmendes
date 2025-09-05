@@ -1,0 +1,5 @@
+SecurityEvent
+| where EventID in (4625,4624) and LogonType == 10
+| summarize Fails=countif(EventID==4625), Success=countif(EventID==4624)
+  by Account, IpAddress, bin(TimeGenerated, 30m), Computer
+| where Fails >= 10 and Success >= 1

@@ -1,0 +1,6 @@
+flowchart LR
+  A["Lab VM (Windows + Sysmon)"] --> B["Azure Monitor Agent"]
+  B --> C["Log Analytics Workspace"]
+  C --> D["Microsoft Sentinel"]
+  D --> E["Analytics Rule: RDP brute force (KQL)"]
+  E --> F["Incident + Entities"]
